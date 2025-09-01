@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF.js Vue 示例</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    #app {
+      height: 100vh;
+    }
+    
+    /* 加载动画 */
+    .loading-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .loading-text {
+      margin-left: 15px;
+      color: #666;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- 初始加载动画 -->
+    <div class="loading-container" id="initial-loading">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">正在加载 PDF 查看器...</div>
+    </div>
+  </div>
+  
+  <script type="module" src="/main.js"></script>
+  
+  <script>
+    // 隐藏初始加载动画
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        const loadingElement = document.getElementById('initial-loading');
+        if (loadingElement) {
+          loadingElement.style.display = 'none';
+        }
+      }, 1000);
+    });
+    
+    // 错误处理
+    window.addEventListener('error', function(e) {
+      console.error('应用程序错误:', e.error);
+      const loadingElement = document.getElementById('initial-loading');
+      if (loadingElement) {
+        loadingElement.innerHTML = `
+          <div style="text-align: center; color: #e74c3c;">
+            <h3>加载失败</h3>
+            <p>请检查控制台获取详细错误信息</p>
+            <button onclick="location.reload()" style="padding: 10px 20px; margin-top: 10px; cursor: pointer;">重新加载</button>
+          </div>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>

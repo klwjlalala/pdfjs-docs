@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PDF.js 基本示例</title>
+    <style>
+      #pdf-canvas {
+        border: 1px solid #ccc;
+        display: block;
+        margin: 20px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>PDF.js 基本示例</h1>
+    <canvas id="pdf-canvas"></canvas>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+      // 配置 Worker 路径
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+      // PDF 文件路径
+      const pdfUrl = "https://github.com/mozilla/pdf.js/blob/master/web/compressed.tracemonkey-pldi-09.pdf";
+
+      // 加载 PDF 文档
+      const loadingTask = pdfjsLib.getDocument(pdfUrl);
+
+      loadingTask.promise
+        .then(function (pdf) {
+          console.log("PDF 加载成功，总页数:", pdf.numPages);
+
+          // 获取第一页
+          return pdf.getPage(1);
+        })
+        .then(function (page) {
+          console.log("页面加载成功");
+
+          // 设置缩放比例
+          const scale = 1.5;
+          const viewport = page.getViewport({ scale: scale });
+
+          // 准备 Canvas
+          const canvas = document.getElementById("pdf-canvas");
+          const context = canvas.getContext("2d");
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+
+          // 渲染页面
+          const renderContext = {
+            canvasContext: context,
+            viewport: viewport,
+          };
+
+          const renderTask = page.render(renderContext);
+
+          return renderTask.promise;
+        })
+        .then(function () {
+          console.log("页面渲染完成");
+        })
+        .catch(function (error) {
+          console.error("错误:", error);
+        });
+    </script>
+  </body>
+</html>

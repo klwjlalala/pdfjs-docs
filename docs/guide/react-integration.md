@@ -4,11 +4,21 @@
 
 ## 安装依赖
 
-```bash
+::: code-group
+
+```bash [npm]
 npm install pdfjs-dist
-# 或者
+```
+
+```bash [yarn]
 yarn add pdfjs-dist
 ```
+
+```bash [pnpm]
+pnpm add pdfjs-dist
+```
+
+:::
 
 ## 创建 PDF 查看器组件
 

@@ -2,8 +2,8 @@
 layout: home
 
 hero:
-  name: "PDF.js"
-  text: "中文文档"
+  name: "PDF中文文档"
+  text: "基于PDF.JS的中文文档和教程"
   tagline: JavaScript PDF 处理库的完整中文API文档
   image:
     src: /logo.svg
@@ -11,23 +11,18 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /guide/getting-started
+      link: /guide/concepts.html
     - theme: alt
       text: API文档
       link: /api/
 
 features:
-  - title: 🚀 纯JavaScript实现
-    details: 无需插件，完全基于Web标准技术，支持现代浏览器和Node.js环境
-  - title: 📖 完整PDF支持
-    details: 支持PDF渲染、文本提取、注释编辑、表单填写等完整PDF功能
-  - title: 🎨 灵活集成
-    details: 提供多种集成方式，从简单的PDF预览到复杂的文档编辑器
-  - title: ⚡ 高性能渲染
-    details: 基于Canvas和Web Worker的高性能渲染引擎，支持大文件处理
-  - title: 🛠️ 丰富API
-    details: 提供完整的API接口，支持自定义渲染、事件处理和扩展开发
-  - title: 🌍 国际化支持
-    details: 支持多语言文本处理和从右到左的文字排版
+  - title: 📚 完整中文文档
+    details: 提供全面的中文API文档和教程，让中文开发者轻松上手PDF.js开发
+  - title: 🎯 实用示例丰富
+    details: 包含Vue、React集成示例和常见场景的完整代码实现，开箱即用
+  - title: 🔧 最佳实践指南
+    details: 涵盖错误处理、性能优化、常见问题等实战经验，避免开发陷阱
+  - title: 📖 结构化学习路径
+    details: 从基础概念到高级应用的渐进式学习体系，适合不同水平的开发者
 ---
-
