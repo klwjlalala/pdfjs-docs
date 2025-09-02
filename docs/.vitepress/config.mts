@@ -166,7 +166,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/mozilla/pdf.js' }
+      { icon: 'github', link: 'https://github.com/klwjlalala/pdfjs-docs' }
     ],
 
     footer: {
