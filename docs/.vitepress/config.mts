@@ -89,7 +89,7 @@ export default defineConfig({
             { text: 'PDFWorker', link: '/api/pdf-worker' },
             { text: 'PDFDataRangeTransport', link: '/api/pdf-data-range-transport' },
             { text: 'Util', link: '/api/util' },
-            { text: '常量和枚举', link: '/api/constants' }
+            { text: '常量和枚举', link: '/api/constants-enums' }
           ]
         }
       ],
